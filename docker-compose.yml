@@ -1,0 +1,22 @@
+version: '3.8'
+
+networks:
+  app:
+    driver: bridge
+  
+services:
+  botmktsx:
+    container_name: botmktsx
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: botmktsx
+    ports:
+      - "8099:8099"
+    environment:
+      - TZ=Asia/Bangkok
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - app
